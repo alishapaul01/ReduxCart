@@ -1,13 +1,11 @@
-import ReactDOM from 'react-dom/client';
 
-import './index.css';
-import App from './App';
-import { Provider } from 'react-redux';
-import store from './store/index'
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import cartSlice from "./cartReducer";
+import showCartSlice from "./showCartReducer";
 
-root.render(<Provider store={store}>
-    <App />
-</Provider>
-);
+import { configureStore } from "@reduxjs/toolkit";
 
+const store= configureStore({
+    reducer: { showCart: showCartSlice.reducer, cart: cartSlice.reducer }
+});
+
+export default store;
